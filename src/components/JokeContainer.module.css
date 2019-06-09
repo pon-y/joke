@@ -1,0 +1,10 @@
+.JokeContainer {
+  font-size: 2rem;
+  display: flex;
+  flex-flow: column;
+  height: 300px;
+  width: 75%;
+  align-self: center;
+  justify-self: center;
+  padding: 10%;
+}
