@@ -1,10 +1,14 @@
 .JokeContainer {
-  font-size: 2rem;
   display: flex;
   flex-flow: column;
-  height: 300px;
-  width: 75%;
+  height: fit-content;
   align-self: center;
   justify-self: center;
   padding: 10%;
+
+  border: 1px solid black;
+}
+
+form {
+  padding: 30px;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from './JokeContainer.module.css';
+import requestJoke from './requestJoke';
+
 import DOMPurify from 'dompurify';
 import Joke from './Joke';
 
@@ -11,23 +13,11 @@ class JokeContainer extends Component {
     userInput: null
   }
 
-  fetchJoke = () => {
-    fetch('https://jokes-api.herokuapp.com/api/joke/33')
-      .then(response => {
-        return response.json();
-       })
-      .then(myJson => {
-        console.log(JSON.stringify(myJson));
-        
-        this.setState({currentJoke: myJson.value, jokeId: myJson.value.id})
-        // need to check for old joke id to check for repeats - and push current id into old jokes after or on call of joke
-        //to add error handling
-      });
-  }
-
   componentDidMount() {
-    this.fetchJoke();
-    
+    requestJoke().then(jokeData => {
+      console.log('jokedata: ', jokeData);
+      this.setState({currentJoke: jokeData, jokeId: jokeData.id});
+    })
   }
 
   render () {
@@ -40,15 +30,15 @@ class JokeContainer extends Component {
     }
     return (
       
-      <div>
-        <div className={styles.JokeContainer}> <Joke joke={joke} author={author}/> </div>
+      <div className={styles.JokeContainer}>
+        <Joke joke={joke} author={author}/>
 
         <form>
           <label>
-            Looking for a specific joke? Enter the id here: 
+            <i>Looking for a specific joke? Enter the id here: </i>
             <input type="text" name="name"/>
           </label>
-        
+        {/* add validation for type of input  */}
            <button> Go! </button>
         </form>
        

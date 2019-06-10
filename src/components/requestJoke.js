@@ -1,0 +1,37 @@
+//function to request a new joke using Fetch api
+//called by joke container
+
+const requestJoke = (jokeId = '') => {
+  let url = 'https://jokes-api.herokuapp.com/api/joke'
+
+  if (typeof jokeId === 'number') {
+    url = `https://jokes-api.herokuapp.com/api/joke/${jokeId}`;
+  }
+
+  return fetch(url)
+    .then(response => {
+      if(response.status === 200) {
+        return response.json();
+      } else {
+          return Promise.reject(response.status);
+      }
+     })
+    .then(myJson => {
+      //return data upon success 
+      console.log(myJson);
+      return myJson.value;
+    })
+    .catch(reason => {
+      console.log(`caught! ${reason}`);
+      if(Number(reason) >= 500) {
+        return requestJoke(jokeId);
+      } else if (Number(reason) === 404) {
+        return requestJoke();
+      }
+      else if (Number(reason) === 429) {
+        return setTimeout((jokeId)=> requestJoke(jokeId) , 5200);
+      }
+    });
+}
+
+export default requestJoke;

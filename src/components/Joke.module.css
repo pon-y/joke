@@ -1,0 +1,9 @@
+.Joke {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.Author {
+  font-size: 1.5rem;
+  align-self: flex-end;
+}
