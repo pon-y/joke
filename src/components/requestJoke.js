@@ -1,7 +1,7 @@
 //function to request a new joke using Fetch api
 //called by joke container
 
-const requestJoke = (jokeId = '') => {
+const requestJoke = (jokeId = '', invalid = false) => {
   let url = 'https://jokes-api.herokuapp.com/api/joke'
 
   if (typeof jokeId === 'number') {
@@ -17,16 +17,13 @@ const requestJoke = (jokeId = '') => {
       }
      })
     .then(myJson => {
-      //return data upon success 
-      console.log(myJson);
-      return myJson.value;
+      return {data: myJson.value, isInvalid: invalid};
     })
     .catch(reason => {
-      console.log(`caught! ${reason}`);
       if(Number(reason) >= 500) {
         return requestJoke(jokeId);
       } else if (Number(reason) === 404) {
-        return requestJoke();
+        return requestJoke('', true);
       }
       else if (Number(reason) === 429) {
         return setTimeout((jokeId)=> requestJoke(jokeId) , 5200);
