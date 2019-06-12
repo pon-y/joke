@@ -10,6 +10,7 @@ label {
   padding: 3rem;
 }
 .button {
+  margin: 5px;
   background: #73767a;
   -webkit-border-radius: 14;
   border-radius: 14px;

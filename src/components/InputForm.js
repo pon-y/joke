@@ -3,7 +3,7 @@ import styles from './InputForm.module.css';
 
 function InputForm ( props ) {
 
-  const {userInput, handleInputChange, handleInputSubmit, loading} = props;
+  const {callRandomJoke, userInput, handleInputChange, handleInputSubmit, loading} = props;
   let disableInput = false;
 
 if( loading || isNaN(Number(userInput))) {
@@ -18,7 +18,7 @@ if( loading || isNaN(Number(userInput))) {
         <input type="text" name="userInput" value={userInput} onChange={handleInputChange}/>
       </label>
      <button className={styles.button} onClick={handleInputSubmit} disabled={disableInput}> Go! </button>
-     
+     <button className={styles.button}  disabled={disableInput} onClick={callRandomJoke}> Random Joke </button>
   </form>
   )
 }

@@ -1,8 +1,7 @@
 .JokeContainer {
   display: flex;
   flex-flow: column;
-  width: 100vw;
-  border: 1px solid black;
+  width: 100vw; 
 }
 
 form {

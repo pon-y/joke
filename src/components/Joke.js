@@ -20,7 +20,7 @@ function Joke ( props ) {
     <div className={styles.Author}> - {props.author}</div>
    </div>)
  }
- console.log(`Invalid or not: ${props.isInvalid}`);
+
   return (
     <div>
      {joke}
