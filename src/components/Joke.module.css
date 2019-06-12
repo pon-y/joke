@@ -1,9 +1,32 @@
 .Joke {
-  font-size: 2rem;
-  padding: 10px;
+  font-size: 3rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .Author {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 0 2rem;
   align-self: flex-end;
+}
+
+.JokeContent {
+  font-size: 2.5rem;
+  padding: 2rem;
+}
+
+.invalidJoke {
+  color: red;
+  /* font-style: italic; */
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.loadingMessage {
+  font-size: 2rem;
+  color: darkslategrey;
+  justify-self: center;
+  font-weight: 300;
+  padding: 3rem;
 }

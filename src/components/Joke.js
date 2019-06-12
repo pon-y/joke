@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Joke.module.css';
 
 function Joke ( props ) {
- let joke = <div>Loading random Joke...</div>;
+ let joke = <div className={styles.loadingMessage}>Loading random Joke...</div>;
 
  let isInvalidStyle = {visibility: 'visible'}
    if( props.isInvalid === true) {
@@ -14,12 +14,13 @@ function Joke ( props ) {
  
  if(props.joke !== '') {
    joke = (
-   <div>
-     <div style={isInvalidStyle}> That input was invalid. Have a random joke instead! </div>
-    <div className={styles.Joke}dangerouslySetInnerHTML={{__html: props.joke}} />
+   <div className={styles.Joke}>
+     <div className={styles.invalidJoke} style={isInvalidStyle}> Well... We couldn't find that joke. Have a random joke instead! </div>
+    <div className={styles.JokeContent}dangerouslySetInnerHTML={{__html: props.joke}} />
     <div className={styles.Author}> - {props.author}</div>
    </div>)
  }
+ console.log(`Invalid or not: ${props.isInvalid}`);
   return (
     <div>
      {joke}

@@ -1,6 +1,3 @@
-//function to request a new joke using Fetch api
-//called by joke container
-
 const requestJoke = (jokeId = '', invalid = false) => {
   let url = 'https://jokes-api.herokuapp.com/api/joke'
 
@@ -26,7 +23,11 @@ const requestJoke = (jokeId = '', invalid = false) => {
         return requestJoke('', true);
       }
       else if (Number(reason) === 429) {
-        return setTimeout((jokeId)=> requestJoke(jokeId) , 5200);
+        return new Promise((resolve, reject) => {
+          setTimeout(()=> {
+            resolve(requestJoke(jokeId));
+          }, 5200);
+        });
       }
     });
 }

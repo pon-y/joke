@@ -5,6 +5,7 @@ import styles from './JokeContainer.module.css';
 import Joke from './Joke';
 
 import requestJoke from './requestJoke';
+import InputForm from './InputForm';
 
 
 class JokeContainer extends Component {
@@ -12,25 +13,26 @@ class JokeContainer extends Component {
     currentJoke: null,
     jokeId: null,
     oldJokes: {},
-    userInput: '33',
-    validInput: true,
+    userInput: '',
     invalidRequest: false
   }
 
   getNewJoke = (id = '') => {
     this.setState({currentJoke: null});
-    requestJoke(id).then(jokeData => {
+    requestJoke(id).then(({data, isInvalid}) => {
       let oldJokes = {...this.state.oldJokes};
     
-      if(oldJokes.hasOwnProperty(jokeData.data.id)) {
-        return Promise.reject('repeat joke');
+ 
+      if(id === '' && oldJokes.hasOwnProperty(data.id)) {
+        return Promise.reject('Repeated joke. Grabbing new joke...');
       }
-      oldJokes[jokeData.data.id] = true;
-      this.setState({currentJoke: jokeData.data, jokeId: jokeData.data.id, invalidRequest: jokeData.isInvalid, oldJokes: oldJokes});
+      oldJokes[data.id] = true;
+      this.setState({currentJoke: data, jokeId: data.id, oldJokes: oldJokes, invalidRequest: isInvalid});
     })
     .catch(response => {
       console.log(response);
-      return setTimeout(()=> this.getNewJoke() , 4000)
+      console.log('error in get new joke');
+      return setTimeout(()=> this.getNewJoke() , 5000)
     });
   }
 
@@ -51,6 +53,9 @@ class JokeContainer extends Component {
   render () {
     let joke = '';
     let author = '';
+
+   
+
     if(this.state.currentJoke) {
 
       joke = DOMPurify.sanitize(this.state.currentJoke.joke);
@@ -59,16 +64,15 @@ class JokeContainer extends Component {
     return (
       
       <div className={styles.JokeContainer}>
-        <Joke joke={joke} author={author} isInvalid={this.state.isInvalid} />
 
-        <form>
-          <label>
-            <i>Looking for a specific joke? Enter the id here: </i>
-            <input type="text" name="userInput" value={this.state.userInput} onChange={this.handleInputChange}/>
-          </label>
-        {/* add validation for type of input  */}
-           <button onClick={this.handleInputSubmit}> Go! </button>
-        </form>
+        <Joke joke={joke} author={author} isInvalid={this.state.invalidRequest} />
+
+        <InputForm
+          loading={!this.state.currentJoke}
+          userInput={this.state.userInput}
+          handleInputChange={this.handleInputChange} 
+          handleInputSubmit={this.handleInputSubmit} 
+        />
        
       </div>
       
