@@ -2,6 +2,7 @@
   "name": "joke",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://pon-y.github.io/joke",
   "dependencies": {
     "dompurify": "^1.0.10",
     "lodash": "^4.17.11",

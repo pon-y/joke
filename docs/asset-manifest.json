@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.db67ea26.chunk.css",
-    "main.js": "/static/js/main.51c9943f.chunk.js",
-    "main.js.map": "/static/js/main.51c9943f.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.9206470e.chunk.js": "/static/js/2.9206470e.chunk.js",
-    "static/js/2.9206470e.chunk.js.map": "/static/js/2.9206470e.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.bc7a8c3e45ed31ba58f3631d58cb5e15.js": "/precache-manifest.bc7a8c3e45ed31ba58f3631d58cb5e15.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.db67ea26.chunk.css.map": "/static/css/main.db67ea26.chunk.css.map"
+    "main.css": "/joke/static/css/main.db67ea26.chunk.css",
+    "main.js": "/joke/static/js/main.bce761d5.chunk.js",
+    "main.js.map": "/joke/static/js/main.bce761d5.chunk.js.map",
+    "runtime~main.js": "/joke/static/js/runtime~main.c91b4fb9.js",
+    "runtime~main.js.map": "/joke/static/js/runtime~main.c91b4fb9.js.map",
+    "static/js/2.9206470e.chunk.js": "/joke/static/js/2.9206470e.chunk.js",
+    "static/js/2.9206470e.chunk.js.map": "/joke/static/js/2.9206470e.chunk.js.map",
+    "index.html": "/joke/index.html",
+    "precache-manifest.e809a8794a822e1767e00e76ff05aed6.js": "/joke/precache-manifest.e809a8794a822e1767e00e76ff05aed6.js",
+    "service-worker.js": "/joke/service-worker.js",
+    "static/css/main.db67ea26.chunk.css.map": "/joke/static/css/main.db67ea26.chunk.css.map"
   }
 }
